@@ -1,18 +1,21 @@
 # caddy + tailscale (Full free way of hosting a home server)
 
-Create a letsencrypt certificate
+* Install [tailscale](https://tailscale.com/download/linux)
+  - add pc
+  - [choose a dns domain](https://login.tailscale.com/admin/dns)
 
-https://certbot.eff.org/instructions?ws=other&os=debianbuster&tab=standard
-
-* Install caddy
+* Create a funnel https://tailscale.com/kb/1223/funnel
 
 ```sh
-apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
-apt update
-apt install caddy
+tailscale funnel 80 &
 ```
+
+* Create a letsencrypt certificate
+
+https://certbot.eff.org/instructions
+* Install Docker
+
+* Install [caddy](https://caddyserver.com/docs/install)
 
 * Create Caddyfile in /etc/caddy
 
@@ -29,18 +32,6 @@ reverse_proxy :11000
 ```
 caddy start &
 ```
-
-* Install tailscale
-  - add pc
-  - choose a dns domain
-
-* Create a funnel https://tailscale.com/kb/1223/funnel
-
-```sh
-tailscale funnel 80 &
-```
-
-* Install Docker
 
 ```
 curl -fsSL https://get.docker.com | sudo sh
