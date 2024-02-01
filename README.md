@@ -40,10 +40,16 @@ caddy start &
 tailscale funnel 80 &
 ```
 
+* Install Docker
+
+```
+curl -fsSL https://get.docker.com | sudo sh
+```
+
 * Run Nextcloud AIO
 
 ```sh
-docker run \
+sudo docker run \
 --init \
 --sig-proxy=false \
 --name nextcloud-aio-mastercontainer \
