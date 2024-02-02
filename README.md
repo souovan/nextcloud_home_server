@@ -13,7 +13,12 @@ tailscale funnel 80 &
 * Create a letsencrypt certificate
 
 https://certbot.eff.org/instructions
+
 * Install Docker
+
+```
+curl -fsSL https://get.docker.com | sudo sh
+```
 
 * Install [caddy](https://caddyserver.com/docs/install)
 
@@ -31,10 +36,6 @@ reverse_proxy :11000
 
 ```
 caddy start &
-```
-
-```
-curl -fsSL https://get.docker.com | sudo sh
 ```
 
 * Run Nextcloud AIO
